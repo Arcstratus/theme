@@ -23,5 +23,9 @@
     "rollup": "^3.18.0",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "tailwindcss": "^4.1.10"
   }
 }
