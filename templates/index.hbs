@@ -1,10 +1,139 @@
 {{!< default}}
-<h1 style="color: red">index</h1>
-<h1 class="text-3xl font-bold underline text-red-500">Hello world!</h1>
-<div class="w-16 h-16 bg-red-500" id="box">box</div>
+<main class="min-h-screen">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50"
+           id="hero-section">
+    <div class="container mx-auto px-4 text-center">
+      <!-- Title Row with Logo and Hello Message -->
+      <div class="flex items-center justify-center mb-8" id="hero-title">
+        <div class="flex items-center space-x-4">
+          <!-- Logo -->
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg"
+               id="hero-logo">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <!-- Hello Message -->
+          <h1 class="text-5xl md:text-7xl font-bold text-gray-900"
+              id="hello-message">Hello</h1>
+        </div>
+      </div>
+      <!-- Subtitle -->
+      <div class="mb-6" id="hero-subtitle">
+        <h2 class="text-2xl md:text-3xl font-semibold text-gray-700">This is Arcstratus knowledge base</h2>
+      </div>
+      <!-- Description -->
+      <div class="mb-12" id="hero-description">
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Need help? You found the right place.</p>
+      </div>
+      <!-- Search Section -->
+      <div class="max-w-2xl mx-auto" id="hero-search">
+        <div class="relative">
+          <button class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-4 flex items-center justify-between text-left text-gray-500 hover:border-blue-300 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 group"
+                  id="search-trigger"
+                  data-ghost-search
+                  aria-label="Open search dialog">
+            <div class="flex items-center space-x-3">
+              <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition-colors"
+                   fill="none"
+                   stroke="currentColor"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                </path>
+              </svg>
+              <span class="text-lg">Search for articles, guides, and more...</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-1 text-sm text-gray-400">
+              <kbd class="px-2 py-1 bg-gray-100 rounded border text-xs">⌘</kbd>
+              <kbd class="px-2 py-1 bg-gray-100 rounded border text-xs">K</kbd>
+            </div>
+          </button>
+        </div>
+        <!-- Search hint -->
+        <p class="text-sm text-gray-400 mt-4">
+          Press <kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">⌘K</kbd> to search quickly
+        </p>
+      </div>
+    </div>
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse"
+           style="animation-delay: 1s"></div>
+    </div>
+  </section>
+</main>
 <script>
-  const { animate, scroll } = Motion;
-
-  const box = document.getElementById("box");
-  animate(box, { rotate: 360 }, { duration: 1 });
+document.addEventListener('DOMContentLoaded', function() {
+  const { animate, stagger } = Motion;
+  
+  // Animate hero elements on load
+  animate('#hero-logo', 
+    { opacity: [0, 1], scale: [0.8, 1], rotate: [0, 360] }, 
+    { duration: 0.8, easing: 'ease-out' }
+  );
+  
+  animate('#hello-message', 
+    { opacity: [0, 1], y: [30, 0] }, 
+    { duration: 0.6, delay: 0.2, easing: 'ease-out' }
+  );
+  
+  animate('#hero-subtitle', 
+    { opacity: [0, 1], y: [20, 0] }, 
+    { duration: 0.5, delay: 0.4, easing: 'ease-out' }
+  );
+  
+  animate('#hero-description', 
+    { opacity: [0, 1], y: [20, 0] }, 
+    { duration: 0.5, delay: 0.6, easing: 'ease-out' }
+  );
+  
+  animate('#hero-search', 
+    { opacity: [0, 1], y: [30, 0] }, 
+    { duration: 0.6, delay: 0.8, easing: 'ease-out' }
+  );
+  
+  // Search trigger functionality
+  const searchTrigger = document.getElementById('search-trigger');
+  
+  searchTrigger.addEventListener('click', function() {
+    // Trigger Ghost's native search
+    if (window.ghostSearchAPI) {
+      window.ghostSearchAPI.open();
+    } else {
+      // Fallback: dispatch keyboard shortcut event
+      const event = new KeyboardEvent('keydown', {
+        key: 'k',
+        code: 'KeyK',
+        metaKey: true,
+        ctrlKey: true
+      });
+      document.dispatchEvent(event);
+    }
+  });
+  
+  // Keyboard shortcut handler
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchTrigger.click();
+    }
+  });
+  
+  // Add hover animation to search button
+  searchTrigger.addEventListener('mouseenter', function() {
+    animate(this, 
+      { scale: 1.02, y: -2 }, 
+      { duration: 0.2, easing: 'ease-out' }
+    );
+  });
+  
+  searchTrigger.addEventListener('mouseleave', function() {
+    animate(this, 
+      { scale: 1, y: 0 }, 
+      { duration: 0.2, easing: 'ease-out' }
+    );
+  });
+});
 </script>
