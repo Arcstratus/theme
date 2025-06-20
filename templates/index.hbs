@@ -1,3 +1,10 @@
 {{!< default}}
 <h1 style="color: red">index</h1>
 <h1 class="text-3xl font-bold underline text-red-500">Hello world!</h1>
+<div class="w-16 h-16 bg-red-500" id="box">box</div>
+<script>
+  const { animate, scroll } = Motion;
+
+  const box = document.getElementById("box");
+  animate(box, { rotate: 360 }, { duration: 1 });
+</script>
