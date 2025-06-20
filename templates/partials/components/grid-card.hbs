@@ -1,0 +1,46 @@
+<article class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 featured-post-card relative cursor-pointer">
+  {{#if feature_image}}
+    <div class="relative overflow-hidden">
+      <img src="{{img_url feature_image size="m"}}" 
+           alt="{{title}}" 
+           class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+      <div class="absolute top-4 right-4">
+        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+          Featured
+        </span>
+      </div>
+    </div>
+  {{/if}}
+  
+  <div class="p-6">
+    {{#if primary_tag}}
+      <div class="mb-3">
+        <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+          {{primary_tag.name}}
+        </span>
+      </div>
+    {{/if}}
+    
+    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
+      <a href="{{url}}" class="stretched-link">{{title}}</a>
+    </h3>
+    
+    {{#if excerpt}}
+      <p class="text-gray-600 mb-4 line-clamp-3">{{excerpt}}</p>
+    {{/if}}
+    
+    <div class="flex items-center justify-between text-sm text-gray-500">
+      <div class="flex items-center space-x-2">
+        {{#if primary_author.profile_image}}
+          <img src="{{img_url primary_author.profile_image size="xs"}}" 
+               alt="{{primary_author.name}}" 
+               class="w-8 h-8 rounded-full">
+        {{/if}}
+        <span>{{primary_author.name}}</span>
+      </div>
+      <time datetime="{{date format="YYYY-MM-DD"}}">
+        {{date format="MMM DD, YYYY"}}
+      </time>
+    </div>
+  </div>
+</article>
