@@ -1,8 +1,129 @@
-<header>
-  <nav>
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-    </ul>
-  </nav>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300" id="animated-header">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between h-16">
+      <!-- Logo/Site Title -->
+      <div class="flex items-center">
+        <a href="{{@site.url}}" class="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors duration-200" id="site-logo">
+          {{@site.title}}
+        </a>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <div class="hidden md:flex items-center space-x-8" id="nav-menu">
+        <a href="{{@site.url}}" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative nav-link">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 nav-underline"></span>
+        </a>
+        <a href="{{@site.url}}/about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative nav-link">
+          About
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 nav-underline"></span>
+        </a>
+        <a href="{{@site.url}}/archive" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative nav-link">
+          Archive
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 nav-underline"></span>
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden flex items-center justify-center w-10 h-10 text-gray-700 hover:text-blue-600 transition-colors duration-200" id="mobile-menu-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0" id="mobile-menu">
+      <div class="py-4 space-y-2">
+        <a href="{{@site.url}}" class="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">
+          Home
+        </a>
+        <a href="{{@site.url}}/about" class="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">
+          About
+        </a>
+        <a href="{{@site.url}}/archive" class="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200">
+          Archive
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Animate header elements on load
+  const { animate, stagger } = Motion;
+  
+  // Animate logo
+  animate('#site-logo', 
+    { opacity: [0, 1], y: [-20, 0] }, 
+    { duration: 0.6, easing: 'ease-out' }
+  );
+  
+  // Animate navigation links with stagger
+  animate('.nav-link', 
+    { opacity: [0, 1], y: [-10, 0] }, 
+    { duration: 0.4, delay: stagger(0.1), easing: 'ease-out' }
+  );
+  
+  // Header scroll effect
+  let lastScrollY = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('animated-header');
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 100) {
+      header.classList.add('shadow-lg');
+      header.classList.remove('bg-white/90');
+      header.classList.add('bg-white/95');
+    } else {
+      header.classList.remove('shadow-lg');
+      header.classList.remove('bg-white/95');
+      header.classList.add('bg-white/90');
+    }
+    
+    // Hide/show header on scroll
+    if (Math.abs(currentScrollY - lastScrollY) > 10) {
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        animate(header, { y: '-100%' }, { duration: 0.3 });
+      } else {
+        animate(header, { y: '0%' }, { duration: 0.3 });
+      }
+      lastScrollY = currentScrollY;
+    }
+  });
+  
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let mobileMenuOpen = false;
+  
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuOpen = !mobileMenuOpen;
+    
+    if (mobileMenuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      animate(mobileMenu.children[0].children, 
+        { opacity: [0, 1], x: [-20, 0] }, 
+        { duration: 0.3, delay: stagger(0.05) }
+      );
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+    }
+  });
+  
+  // Nav link hover effects
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const underline = link.querySelector('.nav-underline');
+    
+    link.addEventListener('mouseenter', () => {
+      animate(underline, { width: '100%' }, { duration: 0.3 });
+    });
+    
+    link.addEventListener('mouseleave', () => {
+      animate(underline, { width: '0%' }, { duration: 0.3 });
+    });
+  });
+});
+</script>
