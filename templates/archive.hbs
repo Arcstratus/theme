@@ -1,0 +1,228 @@
+{{!< default}}
+
+<main class="min-h-screen bg-gray-50">
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="archive-hero">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="archive-title">
+        Archive
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
+        Browse all articles and find exactly what you're looking for
+      </p>
+    </div>
+    
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+  </section>
+
+  <!-- Archive Content -->
+  <section class="py-12" id="archive-content">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row gap-12">
+        
+        <!-- Main Content -->
+        <div class="lg:w-2/3">
+          <!-- Stats -->
+          <div class="mb-8" id="archive-stats">
+            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-lg font-semibold text-gray-900">All Articles</h2>
+                    <p class="text-sm text-gray-500">Complete collection of posts</p>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-blue-600">
+                    {{#get "posts" limit="all"}}
+                      {{posts.length}}
+                    {{/get}}
+                  </div>
+                  <div class="text-xs text-gray-500">Total Posts</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Posts List -->
+          <div class="space-y-8" id="archive-list">
+            {{#get "posts" limit="all" include="authors"}}
+              {{#foreach posts}}
+                {{> components/list-card}}
+              {{/foreach}}
+            {{else}}
+              <!-- Fallback when no posts -->
+              <div class="text-center py-12">
+                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Posts Yet</h3>
+                <p class="text-gray-500">Articles will appear here once they're published.</p>
+              </div>
+            {{/get}}
+          </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <aside class="lg:w-1/3" id="archive-sidebar">
+          <div class="space-y-8">
+            
+            <!-- Search Widget -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Search Articles
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">Find specific content quickly</p>
+              <button class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 flex items-center text-left text-gray-500 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
+                      data-ghost-search>
+                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <span>Search for articles...</span>
+              </button>
+            </div>
+            
+            <!-- Popular Tags -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                </svg>
+                Browse by Topic
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">Filter content by category</p>
+              <div class="space-y-3">
+                {{#get "tags" limit="10" include="count.posts"}}
+                  {{#foreach tags}}
+                    <a href="{{url}}" class="flex items-center justify-between p-3 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-all duration-200 group">
+                      <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-blue-100 group-hover:bg-blue-200 rounded-lg flex items-center justify-center transition-colors duration-200">
+                          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{{name}}</h4>
+                          {{#if description}}
+                            <p class="text-xs text-gray-500 line-clamp-1">{{description}}</p>
+                          {{/if}}
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <span class="text-xs font-medium text-gray-500 bg-gray-200 px-2 py-1 rounded-full">
+                          {{count.posts}} {{plural count.posts empty='posts' singular='post' plural='posts'}}
+                        </span>
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </a>
+                  {{/foreach}}
+                {{/get}}
+              </div>
+            </div>
+            
+            <!-- Featured Posts -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                </svg>
+                Featured Articles
+              </h3>
+              <div class="space-y-4">
+                {{#get "posts" filter="featured:true" limit="5" include="authors"}}
+                  {{#foreach posts}}
+                    <article class="group">
+                      <div class="flex space-x-3">
+                        {{#if feature_image}}
+                          <div class="flex-shrink-0">
+                            <img src="{{img_url feature_image size="xs"}}" 
+                                 alt="{{title}}" 
+                                 class="w-16 h-16 object-cover rounded-lg">
+                          </div>
+                        {{/if}}
+                        <div class="flex-1 min-w-0">
+                          <h4 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                            <a href="{{url}}">{{title}}</a>
+                          </h4>
+                          <p class="text-xs text-gray-500 mt-1">
+                            {{date format="MMM DD, YYYY"}}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  {{/foreach}}
+                {{/get}}
+              </div>
+            </div>
+            
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const { animate, stagger } = Motion;
+  
+  // Animate hero elements on load
+  animate('#archive-title', 
+    { opacity: [0, 1], y: [30, 0] }, 
+    { duration: 0.6, easing: 'ease-out' }
+  );
+  
+  animate('#archive-subtitle', 
+    { opacity: [0, 1], y: [20, 0] }, 
+    { duration: 0.5, delay: 0.2, easing: 'ease-out' }
+  );
+  
+  // Animate stats section
+  animate('#archive-stats', 
+    { opacity: [0, 1], y: [20, 0] }, 
+    { duration: 0.5, delay: 0.4, easing: 'ease-out' }
+  );
+  
+  // Animate content on scroll
+  const archiveContent = document.getElementById('archive-content');
+  if (archiveContent) {
+    const contentObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate post cards with stagger
+          animate('.latest-post-card', 
+            { opacity: [0, 1], y: [40, 0] }, 
+            { duration: 0.5, delay: stagger(0.1, {start: 0.2}), easing: 'ease-out' }
+          );
+          
+          // Animate sidebar widgets with stagger
+          animate('.sidebar-widget', 
+            { opacity: [0, 1], x: [30, 0] }, 
+            { duration: 0.5, delay: stagger(0.1, {start: 0.6}), easing: 'ease-out' }
+          );
+          
+          contentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    contentObserver.observe(archiveContent);
+  }
+});
+</script>
