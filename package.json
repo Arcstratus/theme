@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rollup -c --environment BUILD:production",
     "zip": "npm run build && cd dist && bestzip $npm_package_name.zip ./*",
+    "deploy": "pnpm run zip && node upload.js",
     "test": "npx gscan ."
   },
   "devDependencies": {
@@ -14,6 +15,7 @@
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
+    "@tryghost/admin-api": "^1.13.16",
     "bestzip": "^2.2.1",
     "postcss": "^8.4.24",
     "postcss-import": "^15.1.0",
