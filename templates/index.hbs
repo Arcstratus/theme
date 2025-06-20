@@ -79,7 +79,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featured-grid">
         {{#get "posts" filter="featured:true" limit="6" include="authors"}}
           {{#foreach posts}}
-            <article class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 featured-post-card">
+            <article class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 featured-post-card relative cursor-pointer">
               {{#if feature_image}}
                 <div class="relative overflow-hidden">
                   <img src="{{img_url feature_image size="m"}}" 
@@ -156,6 +156,19 @@
     </div>
   </section>
 </main>
+
+<style>
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const { animate, stagger } = Motion;
