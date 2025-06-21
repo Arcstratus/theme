@@ -4,6 +4,8 @@ routes:
     data: page.about
   /archive/:
     template: archive
+  /featured/:
+    template: featured
 
 collections:
   /:
