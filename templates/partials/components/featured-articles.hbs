@@ -9,18 +9,18 @@
   <div class="space-y-4">
     {{#get "posts" filter="featured:true" limit="5" include="authors"}}
       {{#foreach posts}}
-        <article class="group">
+        <article class="group relative cursor-pointer p-3 rounded-lg hover:bg-gray-50 transition-all duration-200">
           <div class="flex space-x-3">
             {{#if feature_image}}
               <div class="flex-shrink-0">
                 <img src="{{img_url feature_image size="xs"}}" 
                      alt="{{title}}" 
-                     class="w-16 h-16 object-cover rounded-lg">
+                     class="w-16 h-16 object-cover rounded-lg group-hover:shadow-md transition-shadow duration-200">
               </div>
             {{/if}}
             <div class="flex-1 min-w-0">
               <h4 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
-                <a href="{{url}}">{{title}}</a>
+                <a href="{{url}}" class="stretched-link">{{title}}</a>
               </h4>
               <p class="text-xs text-gray-500 mt-1">
                 {{date format="MMM DD, YYYY"}}
