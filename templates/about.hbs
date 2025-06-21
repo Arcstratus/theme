@@ -1,59 +1,78 @@
 {{!< default}}
 
 {{#page}}
-<main class="min-h-screen bg-gray-50">
-  <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="page-hero">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="page-title">
-        {{title}}
-      </h1>
+<main class="min-h-screen bg-bg-secondary">
+  <!-- Enhanced Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-secondary-50 via-bg-primary to-primary-50 overflow-hidden" id="page-hero">
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <!-- Enhanced Header with Icon -->
+      <div class="flex items-center justify-center mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-secondary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg mr-4">
+          <svg class="w-8 h-8 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-2" id="page-title">
+            {{title}}
+          </h1>
+          <div class="w-24 h-1 bg-gradient-to-r from-secondary-500 to-primary-600 rounded-full mx-auto"></div>
+        </div>
+      </div>
+      
       {{#if excerpt}}
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="page-excerpt">
+        <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" id="page-excerpt">
           {{excerpt}}
         </p>
       {{/if}}
     </div>
     
-    <!-- Animated background elements -->
+    <!-- Enhanced Animated background elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
-      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-gradient-to-br from-secondary-100/30 to-primary-100/30 rounded-full opacity-50 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-gradient-to-tl from-primary-100/40 to-accent-100/40 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-accent-200/20 to-secondary-200/20 rounded-full opacity-60 animate-pulse" style="animation-delay: 2s;"></div>
     </div>
   </section>
 
-  <!-- Main Content -->
-  <section class="py-12" id="page-content">
+  <!-- Enhanced Main Content -->
+  <section class="py-16" id="page-content">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         
-        <!-- Page Content -->
-        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <!-- Enhanced Page Content Card -->
+        <div class="bg-bg-primary rounded-2xl shadow-xl border border-border-primary overflow-hidden hover:shadow-2xl transition-shadow duration-300">
           {{#if feature_image}}
             <div class="relative h-64 md:h-96 overflow-hidden">
               <img src="{{img_url feature_image size="xl"}}" 
                    alt="{{title}}" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent"></div>
             </div>
           {{/if}}
           
           <article class="p-8 md:p-12">
-            <!-- Page Content -->
+            <!-- Enhanced Page Content -->
             <div class="prose prose-lg prose-gray max-w-none" id="ghost-content">
               {{content}}
             </div>
             
-            <!-- Meta Information -->
+            <!-- Enhanced Meta Information -->
             {{#if updated_at}}
-              <div class="flex items-center text-sm text-gray-500 mt-12 pt-8 border-t border-gray-200">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>Last updated on {{date updated_at format="MMMM DD, YYYY"}}</span>
+              <div class="mt-12 pt-8 border-t border-border-primary">
+                <div class="flex items-center text-sm text-text-muted">
+                  <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-4 h-4 text-interactive-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                  <span>Last updated on {{date updated_at format="MMMM DD, YYYY"}}</span>
+                </div>
               </div>
             {{/if}}
           </article>
         </div>
+
 
       </div>
     </div>
@@ -62,16 +81,16 @@
 {{/page}}
 
 <style>
-/* Enhanced prose styling for Ghost content */
+/* Enhanced prose styling using color variables */
 .prose {
-  color: #374151;
+  color: var(--color-text-secondary);
   line-height: 1.8;
   word-spacing: 0.05em;
   letter-spacing: 0.01em;
 }
 
 .prose h1 {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 800;
   font-size: 2.25rem;
   margin-top: 0;
@@ -80,7 +99,7 @@
 }
 
 .prose h2 {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 700;
   font-size: 1.875rem;
   margin-top: 3rem;
@@ -89,7 +108,7 @@
 }
 
 .prose h3 {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 600;
   font-size: 1.5rem;
   margin-top: 2.5rem;
@@ -98,7 +117,7 @@
 }
 
 .prose h4 {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 600;
   font-size: 1.25rem;
   margin-top: 2rem;
@@ -112,18 +131,18 @@
 }
 
 .prose a {
-  color: #2563eb;
+  color: var(--color-interactive-primary);
   text-decoration: underline;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .prose a:hover {
-  color: #1d4ed8;
+  color: var(--color-interactive-primary-hover);
 }
 
 .prose strong {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 600;
 }
 
@@ -141,27 +160,30 @@
 .prose blockquote {
   font-weight: 500;
   font-style: italic;
-  color: #111827;
+  color: var(--color-text-primary);
   border-left-width: 0.25rem;
-  border-left-color: #e5e7eb;
+  border-left-color: var(--color-border-primary);
   quotes: "\201C""\201D""\2018""\2019";
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding-left: 1rem;
+  background: var(--color-bg-secondary);
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 0.5rem;
 }
 
 .prose code {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 600;
   font-size: 0.875rem;
-  background-color: #f3f4f6;
+  background-color: var(--color-bg-muted);
   padding: 0.25rem 0.375rem;
   border-radius: 0.375rem;
 }
 
 .prose pre {
-  color: #e5e7eb;
-  background-color: #1f2937;
+  color: var(--color-neutral-200);
+  background-color: var(--color-neutral-900);
   overflow-x: auto;
   font-weight: 400;
   font-size: 0.875rem;
@@ -170,6 +192,7 @@
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   padding: 1rem;
+  border: 1px solid var(--color-border-primary);
 }
 
 .prose pre code {
@@ -188,7 +211,8 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px var(--color-shadow-primary), 0 4px 6px -2px var(--color-shadow-secondary);
+  border: 1px solid var(--color-border-primary);
 }
 
 .prose table {
@@ -199,33 +223,32 @@
   margin-bottom: 2rem;
   font-size: 0.875rem;
   line-height: 1.7142857;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .prose thead {
   border-bottom-width: 1px;
-  border-bottom-color: #d1d5db;
+  border-bottom-color: var(--color-border-primary);
+  background-color: var(--color-bg-secondary);
 }
 
 .prose thead th {
-  color: #111827;
+  color: var(--color-text-primary);
   font-weight: 600;
   vertical-align: bottom;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .prose tbody td {
   vertical-align: baseline;
-  padding-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--color-border-muted);
 }
 
-.prose tbody tr {
-  border-bottom-width: 1px;
-  border-bottom-color: #e5e7eb;
+.prose tbody tr:hover {
+  background-color: var(--color-bg-secondary);
 }
 </style>
 
