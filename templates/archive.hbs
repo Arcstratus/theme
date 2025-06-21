@@ -1,21 +1,21 @@
 {{!< default}}
 
-<main class="min-h-screen bg-gray-50">
+<main class="min-h-screen bg-bg-secondary">
   <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="archive-hero">
+  <section class="relative py-20 bg-gradient-to-br from-primary-50 via-bg-primary to-accent-50" id="archive-hero">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="archive-title">
+      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6" id="archive-title">
         Archive
       </h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
+      <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
         Browse all articles and find exactly what you're looking for
       </p>
     </div>
     
     <!-- Animated background elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
-      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-arcstratus-blue-light rounded-full opacity-20 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-arcstratus-indigo-light rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
     </div>
   </section>
 
@@ -28,26 +28,26 @@
         <div class="lg:w-2/3">
           <!-- Stats -->
           <div class="mb-8" id="archive-stats">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-bg-primary rounded-xl shadow-lg p-6 border border-border-primary">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-interactive-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-lg font-semibold text-gray-900">All Articles</h2>
-                    <p class="text-sm text-gray-500">Complete collection of posts</p>
+                    <h2 class="text-lg font-semibold text-text-primary">All Articles</h2>
+                    <p class="text-sm text-text-muted">Complete collection of posts</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-2xl font-bold text-blue-600">
+                  <div class="text-2xl font-bold text-interactive-primary">
                     {{#get "posts" limit="all"}}
                       {{posts.length}}
                     {{/get}}
                   </div>
-                  <div class="text-xs text-gray-500">Total Posts</div>
+                  <div class="text-xs text-text-muted">Total Posts</div>
                 </div>
               </div>
             </div>

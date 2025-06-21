@@ -1,40 +1,40 @@
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="hero-section">
+<section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 via-bg-primary to-accent-50" id="hero-section">
   <div class="container mx-auto px-4 text-center">
     
     <!-- Title Row with Logo and Hello Message -->
     <div class="flex items-center justify-center mb-8" id="hero-title">
       <div class="flex items-center space-x-4">
         <!-- Logo -->
-        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg" id="hero-logo">
-          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <div class="w-16 h-16 bg-gradient-to-br from-arcstratus-blue to-arcstratus-indigo rounded-2xl flex items-center justify-center shadow-lg" id="hero-logo">
+          <svg class="w-8 h-8 text-text-inverse" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           </svg>
         </div>
         <!-- Hello Message -->
-        <h1 class="text-5xl md:text-7xl font-bold text-gray-900" id="hello-message">Hello</h1>
+        <h1 class="text-5xl md:text-7xl font-bold text-text-primary" id="hello-message">Hello</h1>
       </div>
     </div>
     
     <!-- Subtitle -->
     <div class="mb-6" id="hero-subtitle">
-      <h2 class="text-2xl md:text-3xl font-semibold text-gray-700">This is Arcstratus knowledge base</h2>
+      <h2 class="text-2xl md:text-3xl font-semibold text-text-secondary">This is Arcstratus knowledge base</h2>
     </div>
     
     <!-- Description -->
     <div class="mb-12" id="hero-description">
-      <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Need help? You found the right place.</p>
+      <p class="text-lg md:text-xl text-text-muted max-w-2xl mx-auto">Need help? You found the right place.</p>
     </div>
     
     <!-- Search Section -->
     <div class="max-w-2xl mx-auto" id="hero-search">
       <div class="relative">
-        <button class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-4 flex items-center justify-between text-left text-gray-500 hover:border-blue-300 hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-400 group"
+        <button class="w-full bg-bg-primary border-2 border-border-primary rounded-2xl px-6 py-4 flex items-center justify-between text-left text-text-muted hover:border-interactive-primary hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-interactive-primary group"
                 id="search-trigger"
                 data-ghost-search
                 aria-label="Open search dialog">
           <div class="flex items-center space-x-3">
-            <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition-colors"
+            <svg class="w-6 h-6 text-text-muted group-hover:text-interactive-primary transition-colors"
                  fill="none"
                  stroke="currentColor"
                  viewBox="0 0 24 24">
@@ -43,16 +43,16 @@
             </svg>
             <span class="text-lg">Search for articles, guides, and more...</span>
           </div>
-          <div class="hidden md:flex items-center space-x-1 text-sm text-gray-400">
-            <kbd class="px-2 py-1 bg-gray-100 rounded border text-xs">⌘</kbd>
-            <kbd class="px-2 py-1 bg-gray-100 rounded border text-xs">K</kbd>
+          <div class="hidden md:flex items-center space-x-1 text-sm text-text-muted">
+            <kbd class="px-2 py-1 bg-bg-muted rounded border text-xs">⌘</kbd>
+            <kbd class="px-2 py-1 bg-bg-muted rounded border text-xs">K</kbd>
           </div>
         </button>
       </div>
       
       <!-- Search hint -->
-      <p class="text-sm text-gray-400 mt-4">
-        Press <kbd class="px-1 py-0.5 bg-gray-100 rounded text-xs">⌘K</kbd> to search quickly
+      <p class="text-sm text-text-muted mt-4">
+        Press <kbd class="px-1 py-0.5 bg-bg-muted rounded text-xs">⌘K</kbd> to search quickly
       </p>
     </div>
     
@@ -60,7 +60,7 @@
   
   <!-- Animated background elements -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
-    <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s"></div>
+    <div class="absolute -top-10 -right-10 w-96 h-96 bg-arcstratus-blue-light rounded-full opacity-20 animate-pulse"></div>
+    <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-arcstratus-indigo-light rounded-full opacity-20 animate-pulse" style="animation-delay: 1s"></div>
   </div>
 </section>

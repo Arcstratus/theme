@@ -1,4 +1,4 @@
-<article class="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 latest-post-card relative cursor-pointer">
+<article class="group bg-bg-primary rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-border-primary latest-post-card relative cursor-pointer">
   <div class="flex flex-col md:flex-row">
     {{#if feature_image}}
       <div class="md:w-1/3 relative overflow-hidden">
@@ -7,7 +7,7 @@
              class="w-full h-48 md:h-full object-cover group-hover:scale-105 transition-transform duration-300">
         {{#if featured}}
           <div class="absolute top-4 left-4">
-            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <span class="bg-interactive-primary text-text-inverse px-3 py-1 rounded-full text-sm font-medium">
               Featured
             </span>
           </div>
@@ -19,22 +19,22 @@
       <div>
         {{#if primary_tag}}
           <div class="mb-3">
-            <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+            <span class="inline-block bg-bg-muted text-text-secondary px-3 py-1 rounded-full text-sm font-medium">
               {{primary_tag.name}}
             </span>
           </div>
         {{/if}}
         
-        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+        <h3 class="text-2xl font-bold text-text-primary mb-3 group-hover:text-interactive-primary transition-colors duration-200 line-clamp-2">
           <a href="{{url}}" class="stretched-link">{{title}}</a>
         </h3>
         
         {{#if excerpt}}
-          <p class="text-gray-600 mb-4 line-clamp-2 md:line-clamp-3">{{excerpt}}</p>
+          <p class="text-text-secondary mb-4 line-clamp-2 md:line-clamp-3">{{excerpt}}</p>
         {{/if}}
       </div>
       
-      <div class="flex items-center justify-between text-sm text-gray-500">
+      <div class="flex items-center justify-between text-sm text-text-muted">
         <div class="flex items-center space-x-2">
           {{#if primary_author.profile_image}}
             <img src="{{img_url primary_author.profile_image size="xs"}}" 
