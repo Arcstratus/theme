@@ -1,140 +1,150 @@
 {{!< default}}
-<main class="min-h-screen bg-gray-50">
-  <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="tag-hero">
-    <div class="container mx-auto px-4 text-center">
-      <div class="flex items-center justify-center mb-6">
-        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
-          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<main class="min-h-screen bg-bg-secondary">
+  <!-- Enhanced Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-accent-50 via-bg-primary to-accent-100 overflow-hidden" id="tag-hero">
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <div class="flex items-center justify-center mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg mr-4">
+          <svg class="w-8 h-8 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
           </svg>
         </div>
+        <div>
+          <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-2" id="tag-title">
+            {{tag.name}}
+          </h1>
+          <div class="w-24 h-1 bg-gradient-to-r from-accent-400 to-accent-600 rounded-full mx-auto"></div>
+        </div>
       </div>
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="tag-title">
-        {{tag.name}}
-      </h1>
       {{#if tag.description}}
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
+        <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
           {{tag.description}}
         </p>
       {{else}}
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
+        <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
           Browse all articles tagged with "{{tag.name}}"
         </p>
       {{/if}}
     </div>
     
-    <!-- Animated background elements -->
+    <!-- Enhanced Animated background elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
-      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-indigo-100 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-gradient-to-br from-accent-100/30 to-accent-200/30 rounded-full opacity-50 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-gradient-to-tl from-primary-100/40 to-secondary-100/40 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-secondary-200/20 to-accent-200/20 rounded-full opacity-60 animate-pulse" style="animation-delay: 2s;"></div>
     </div>
   </section>
 
-  <!-- Tag Content -->
-  <section class="py-12" id="tag-content">
+  <!-- Enhanced Tag Content -->
+  <section class="py-16" id="tag-content">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row gap-12">
         
-        <!-- Main Content -->
+        <!-- Enhanced Main Content -->
         <div class="lg:w-2/3">
-          <!-- Stats -->
+          <!-- Enhanced Stats -->
           <div class="mb-8" id="tag-stats">
-            <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="bg-bg-primary rounded-2xl shadow-xl p-6 border border-border-primary hover:shadow-2xl transition-shadow duration-300">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                    <svg class="w-6 h-6 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-lg font-semibold text-gray-900">Tagged Articles</h2>
-                    <p class="text-sm text-gray-500">Posts in "{{tag.name}}" category</p>
+                    <h2 class="text-xl font-bold text-text-primary">Tagged Articles</h2>
+                    <p class="text-text-secondary">Posts in "{{tag.name}}" category</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-2xl font-bold text-blue-600">
+                  <div class="text-3xl font-bold text-interactive-primary">
                     {{pagination.total}}
                   </div>
-                  <div class="text-xs text-gray-500">{{plural pagination.total empty='Posts' singular='Post' plural='Posts'}}</div>
+                  <div class="text-sm text-text-muted">{{plural pagination.total empty='Posts' singular='Post' plural='Posts'}}</div>
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Posts List -->
+          <!-- Enhanced Posts List -->
           <div class="space-y-8" id="tag-list">
             {{#foreach posts}}
               {{> components/list-card}}
             {{else}}
-              <!-- Fallback when no posts -->
-              <div class="text-center py-12">
-                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
-                  </svg>
+              <!-- Enhanced Fallback when no posts -->
+              <div class="text-center py-16">
+                <div class="max-w-md mx-auto">
+                  <div class="w-24 h-24 bg-gradient-to-br from-accent-100 to-accent-200 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <svg class="w-12 h-12 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-2xl font-bold text-text-primary mb-3">No Posts Found</h3>
+                  <p class="text-text-secondary leading-relaxed">No articles have been tagged with "{{tag.name}}" yet. Check back soon for new content!</p>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Posts Found</h3>
-                <p class="text-gray-500">No articles have been tagged with "{{tag.name}}" yet.</p>
               </div>
             {{/foreach}}
           </div>
         </div>
         
-        <!-- Sidebar -->
+        <!-- Enhanced Sidebar -->
         <aside class="lg:w-1/3" id="tag-sidebar">
           <div class="space-y-8">
             
-            <!-- Search Widget -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
-              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+            <!-- Enhanced Search Widget -->
+            <div class="bg-bg-primary rounded-2xl shadow-lg p-6 border border-border-primary sidebar-widget hover:shadow-xl transition-shadow duration-300">
+              <h3 class="text-xl font-bold text-text-primary mb-4 flex items-center">
+                <div class="w-6 h-6 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-3 h-3 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
                 Search Articles
               </h3>
-              <p class="text-gray-600 text-sm mb-4">Find specific content quickly</p>
-              <button class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 flex items-center text-left text-gray-500 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
+              <p class="text-text-secondary text-sm mb-4">Find specific content quickly</p>
+              <button class="w-full bg-bg-secondary border border-border-primary rounded-xl px-4 py-3 flex items-center text-left text-text-muted hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 group"
                       data-ghost-search>
-                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-text-muted group-hover:text-interactive-primary transition-colors mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 <span>Search for articles...</span>
               </button>
             </div>
             
-            <!-- Related Tags -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
-              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
-                </svg>
+            <!-- Enhanced Related Tags -->
+            <div class="bg-bg-primary rounded-2xl shadow-lg p-6 border border-border-primary sidebar-widget hover:shadow-xl transition-shadow duration-300">
+              <h3 class="text-xl font-bold text-text-primary mb-4 flex items-center">
+                <div class="w-6 h-6 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-3 h-3 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+                  </svg>
+                </div>
                 Other Topics
               </h3>
-              <p class="text-gray-600 text-sm mb-4">Explore different categories</p>
+              <p class="text-text-secondary text-sm mb-4">Explore different categories</p>
               <div class="space-y-3">
                 {{#get "tags" limit="8" include="count.posts" filter="id:-{{tag.id}}"}}
                   {{#foreach tags}}
-                    <a href="{{url}}" class="flex items-center justify-between p-3 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-all duration-200 group">
+                    <a href="{{url}}" class="flex items-center justify-between p-3 bg-bg-secondary hover:bg-primary-50 rounded-xl border border-border-primary hover:border-primary-200 transition-all duration-200 group">
                       <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 bg-blue-100 group-hover:bg-blue-200 rounded-lg flex items-center justify-center transition-colors duration-200">
-                          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-8 h-8 bg-primary-100 group-hover:bg-primary-200 rounded-lg flex items-center justify-center transition-colors duration-200">
+                          <svg class="w-4 h-4 text-interactive-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                           </svg>
                         </div>
                         <div>
-                          <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{{name}}</h4>
+                          <h4 class="font-semibold text-text-primary group-hover:text-interactive-primary transition-colors duration-200">{{name}}</h4>
                           {{#if description}}
-                            <p class="text-xs text-gray-500 line-clamp-1">{{description}}</p>
+                            <p class="text-xs text-text-muted line-clamp-1">{{description}}</p>
                           {{/if}}
                         </div>
                       </div>
                       <div class="flex items-center space-x-2">
-                        <span class="text-xs font-medium text-gray-500 bg-gray-200 px-2 py-1 rounded-full">
+                        <span class="text-xs font-medium text-text-muted bg-bg-muted px-2 py-1 rounded-full">
                           {{count.posts}} {{plural count.posts empty='posts' singular='post' plural='posts'}}
                         </span>
-                        <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-text-muted group-hover:text-interactive-primary transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                       </div>
@@ -146,19 +156,21 @@
             
             {{> components/featured-articles}}
             
-            <!-- Back to Archive -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
-              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
-                </svg>
+            <!-- Enhanced Navigation Widget -->
+            <div class="bg-bg-primary rounded-2xl shadow-lg p-6 border border-border-primary sidebar-widget hover:shadow-xl transition-shadow duration-300">
+              <h3 class="text-xl font-bold text-text-primary mb-4 flex items-center">
+                <div class="w-6 h-6 bg-gradient-to-br from-accent-400 to-accent-600 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-3 h-3 text-text-inverse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                  </svg>
+                </div>
                 Browse More
               </h3>
               <div class="space-y-3">
-                <a href="{{@site.url}}/archive" class="block w-full text-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                <a href="{{@site.url}}/archive" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-interactive-primary to-interactive-primary-hover text-text-inverse font-medium rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300">
                   View All Articles
                 </a>
-                <a href="{{@site.url}}" class="block w-full text-center px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                <a href="{{@site.url}}" class="block w-full text-center px-4 py-3 bg-bg-secondary border border-border-primary text-text-primary font-medium rounded-xl hover:bg-bg-muted hover:border-primary-300 transition-all duration-300">
                   Back to Home
                 </a>
               </div>
