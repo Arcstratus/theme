@@ -1,15 +1,27 @@
 {{!< default}}
-
 <main class="min-h-screen bg-gray-50">
   <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="archive-hero">
+  <section class="relative py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50" id="tag-hero">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="archive-title">
-        Archive
+      <div class="flex items-center justify-center mb-6">
+        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
+          </svg>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6" id="tag-title">
+        {{tag.name}}
       </h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
-        Browse all articles and find exactly what you're looking for
-      </p>
+      {{#if tag.description}}
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
+          {{tag.description}}
+        </p>
+      {{else}}
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" id="tag-subtitle">
+          Browse all articles tagged with "{{tag.name}}"
+        </p>
+      {{/if}}
     </div>
     
     <!-- Animated background elements -->
@@ -19,63 +31,59 @@
     </div>
   </section>
 
-  <!-- Archive Content -->
-  <section class="py-12" id="archive-content">
+  <!-- Tag Content -->
+  <section class="py-12" id="tag-content">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row gap-12">
         
         <!-- Main Content -->
         <div class="lg:w-2/3">
           <!-- Stats -->
-          <div class="mb-8" id="archive-stats">
+          <div class="mb-8" id="tag-stats">
             <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
                   <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-lg font-semibold text-gray-900">All Articles</h2>
-                    <p class="text-sm text-gray-500">Complete collection of posts</p>
+                    <h2 class="text-lg font-semibold text-gray-900">Tagged Articles</h2>
+                    <p class="text-sm text-gray-500">Posts in "{{tag.name}}" category</p>
                   </div>
                 </div>
                 <div class="text-right">
                   <div class="text-2xl font-bold text-blue-600">
-                    {{#get "posts" limit="all"}}
-                      {{posts.length}}
-                    {{/get}}
+                    {{pagination.total}}
                   </div>
-                  <div class="text-xs text-gray-500">Total Posts</div>
+                  <div class="text-xs text-gray-500">{{plural pagination.total empty='Posts' singular='Post' plural='Posts'}}</div>
                 </div>
               </div>
             </div>
           </div>
           
           <!-- Posts List -->
-          <div class="space-y-8" id="archive-list">
-            {{#get "posts" limit="all" include="authors"}}
-              {{#foreach posts}}
-                {{> components/list-card}}
-              {{/foreach}}
+          <div class="space-y-8" id="tag-list">
+            {{#foreach posts}}
+              {{> components/list-card}}
             {{else}}
               <!-- Fallback when no posts -->
               <div class="text-center py-12">
                 <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                   </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Posts Yet</h3>
-                <p class="text-gray-500">Articles will appear here once they're published.</p>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Posts Found</h3>
+                <p class="text-gray-500">No articles have been tagged with "{{tag.name}}" yet.</p>
               </div>
-            {{/get}}
+            {{/foreach}}
           </div>
         </div>
         
         <!-- Sidebar -->
-        <aside class="lg:w-1/3" id="archive-sidebar">
+        <aside class="lg:w-1/3" id="tag-sidebar">
           <div class="space-y-8">
             
             <!-- Search Widget -->
@@ -96,17 +104,17 @@
               </button>
             </div>
             
-            <!-- Popular Tags -->
+            <!-- Related Tags -->
             <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
               <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                 <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                 </svg>
-                Browse by Topic
+                Other Topics
               </h3>
-              <p class="text-gray-600 text-sm mb-4">Filter content by category</p>
+              <p class="text-gray-600 text-sm mb-4">Explore different categories</p>
               <div class="space-y-3">
-                {{#get "tags" limit="10" include="count.posts"}}
+                {{#get "tags" limit="8" include="count.posts" filter="id:-{{tag.id}}"}}
                   {{#foreach tags}}
                     <a href="{{url}}" class="flex items-center justify-between p-3 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-all duration-200 group">
                       <div class="flex items-center space-x-3">
@@ -171,6 +179,24 @@
               </div>
             </div>
             
+            <!-- Back to Archive -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                </svg>
+                Browse More
+              </h3>
+              <div class="space-y-3">
+                <a href="{{@site.url}}/archive" class="block w-full text-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                  View All Articles
+                </a>
+                <a href="{{@site.url}}" class="block w-full text-center px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200">
+                  Back to Home
+                </a>
+              </div>
+            </div>
+            
           </div>
         </aside>
       </div>
@@ -195,25 +221,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const { animate, stagger } = Motion;
   
   // Animate hero elements on load
-  animate('#archive-title', 
+  animate('#tag-title', 
     { opacity: [0, 1], y: [30, 0] }, 
     { duration: 0.6, easing: 'ease-out' }
   );
   
-  animate('#archive-subtitle', 
+  animate('#tag-subtitle', 
     { opacity: [0, 1], y: [20, 0] }, 
     { duration: 0.5, delay: 0.2, easing: 'ease-out' }
   );
   
   // Animate stats section
-  animate('#archive-stats', 
+  animate('#tag-stats', 
     { opacity: [0, 1], y: [20, 0] }, 
     { duration: 0.5, delay: 0.4, easing: 'ease-out' }
   );
   
   // Animate content on scroll
-  const archiveContent = document.getElementById('archive-content');
-  if (archiveContent) {
+  const tagContent = document.getElementById('tag-content');
+  if (tagContent) {
     const contentObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -234,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }, { threshold: 0.1 });
     
-    contentObserver.observe(archiveContent);
+    contentObserver.observe(tagContent);
   }
 });
 </script>
