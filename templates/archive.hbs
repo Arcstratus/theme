@@ -1,21 +1,21 @@
 {{!< default}}
 
-<main class="min-h-screen bg-bg-secondary">
+<main class="min-h-screen bg-background">
   <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-primary-50 via-bg-primary to-accent-50" id="archive-hero">
+  <section class="relative py-20 bg-gradient-to-br from-muted via-background to-muted" id="archive-hero">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold text-text-primary mb-6" id="archive-title">
+      <h1 class="text-4xl md:text-6xl font-bold text-foreground mb-6" id="archive-title">
         Archive
       </h1>
-      <p class="text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
+      <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" id="archive-subtitle">
         Browse all articles and find exactly what you're looking for
       </p>
     </div>
     
     <!-- Animated background elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-10 -right-10 w-96 h-96 bg-arcstratus-blue-light rounded-full opacity-20 animate-pulse"></div>
-      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-arcstratus-indigo-light rounded-full opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute -top-10 -right-10 w-96 h-96 bg-primary/20 rounded-full opacity-50 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-96 h-96 bg-primary/20 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
     </div>
   </section>
 
@@ -28,26 +28,26 @@
         <div class="lg:w-2/3">
           <!-- Stats -->
           <div class="mb-8" id="archive-stats">
-            <div class="bg-bg-primary rounded-xl shadow-lg p-6 border border-border-primary">
+            <div class="bg-card rounded-xl shadow-lg p-6 border border-border">
               <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                  <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3">
-                    <svg class="w-5 h-5 text-interactive-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="w-10 h-10 bg-muted rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-lg font-semibold text-text-primary">All Articles</h2>
-                    <p class="text-sm text-text-muted">Complete collection of posts</p>
+                    <h2 class="text-lg font-semibold text-foreground">All Articles</h2>
+                    <p class="text-sm text-muted-foreground">Complete collection of posts</p>
                   </div>
                 </div>
                 <div class="text-right">
-                  <div class="text-2xl font-bold text-interactive-primary">
+                  <div class="text-2xl font-bold text-primary">
                     {{#get "posts" limit="all"}}
                       {{posts.length}}
                     {{/get}}
                   </div>
-                  <div class="text-xs text-text-muted">Total Posts</div>
+                  <div class="text-xs text-muted-foreground">Total Posts</div>
                 </div>
               </div>
             </div>
@@ -62,13 +62,13 @@
             {{else}}
               <!-- Fallback when no posts -->
               <div class="text-center py-12">
-                <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Posts Yet</h3>
-                <p class="text-gray-500">Articles will appear here once they're published.</p>
+                <h3 class="text-xl font-semibold text-foreground mb-2">No Posts Yet</h3>
+                <p class="text-muted-foreground">Articles will appear here once they're published.</p>
               </div>
             {{/get}}
           </div>
@@ -79,17 +79,17 @@
           <div class="space-y-8">
             
             <!-- Search Widget -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
-              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-card rounded-2xl shadow-lg p-6 border border-border sidebar-widget">
+              <h3 class="text-xl font-bold text-foreground mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 Search Articles
               </h3>
-              <p class="text-gray-600 text-sm mb-4">Find specific content quickly</p>
-              <button class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 flex items-center text-left text-gray-500 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
+              <p class="text-muted-foreground text-sm mb-4">Find specific content quickly</p>
+              <button class="w-full bg-muted border border-border rounded-xl px-4 py-3 flex items-center text-left text-muted-foreground hover:border-primary hover:bg-muted/50 transition-all duration-200 group"
                       data-ghost-search>
-                <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 <span>Search for articles...</span>
@@ -97,36 +97,36 @@
             </div>
             
             <!-- Popular Tags -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 sidebar-widget">
-              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-card rounded-2xl shadow-lg p-6 border border-border sidebar-widget">
+              <h3 class="text-xl font-bold text-foreground mb-4 flex items-center">
+                <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                 </svg>
                 Browse by Topic
               </h3>
-              <p class="text-gray-600 text-sm mb-4">Filter content by category</p>
+              <p class="text-muted-foreground text-sm mb-4">Filter content by category</p>
               <div class="space-y-3">
                 {{#get "tags" limit="10" include="count.posts"}}
                   {{#foreach tags}}
-                    <a href="{{url}}" class="flex items-center justify-between p-3 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-all duration-200 group">
+                    <a href="{{url}}" class="flex items-center justify-between p-3 bg-muted hover:bg-secondary/20 rounded-lg border border-border hover:border-secondary/30 transition-all duration-200 group">
                       <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 bg-blue-100 group-hover:bg-blue-200 rounded-lg flex items-center justify-center transition-colors duration-200">
-                          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-8 h-8 bg-background group-hover:bg-secondary/20 rounded-lg flex items-center justify-center transition-colors duration-200">
+                          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.99 1.99 0 013 12V7a4 4 0 014-4z"></path>
                           </svg>
                         </div>
                         <div>
-                          <h4 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{{name}}</h4>
+                          <h4 class="font-semibold text-foreground group-hover:text-primary transition-colors duration-200">{{name}}</h4>
                           {{#if description}}
-                            <p class="text-xs text-gray-500 line-clamp-1">{{description}}</p>
+                            <p class="text-xs text-muted-foreground line-clamp-1">{{description}}</p>
                           {{/if}}
                         </div>
                       </div>
                       <div class="flex items-center space-x-2">
-                        <span class="text-xs font-medium text-gray-500 bg-gray-200 px-2 py-1 rounded-full">
+                        <span class="text-xs font-medium text-muted-foreground bg-background px-2 py-1 rounded-full">
                           {{count.posts}} {{plural count.posts empty='posts' singular='post' plural='posts'}}
                         </span>
-                        <svg class="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                       </div>
