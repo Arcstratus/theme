@@ -1,73 +1,130 @@
 <!-- Featured Posts Section -->
-<section class="py-20 bg-bg-primary relative overflow-hidden" id="featured-posts">
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-warning-100/30 to-warning-200/30 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-48 h-48 bg-gradient-to-tl from-primary-100/40 to-accent-100/40 rounded-full blur-2xl"></div>
-  </div>
-  
-  <div class="container mx-auto px-4 relative z-10">
-    <!-- Enhanced Header -->
-    <div class="text-center mb-16">
-      <div class="flex items-center justify-center mb-6">
-        <div class="w-16 h-16 bg-gradient-to-br from-warning-400 to-warning-600 rounded-2xl flex items-center justify-center shadow-lg mr-4">
-          <svg class="w-8 h-8 text-text-inverse" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
-          </svg>
+<section class="py-12 md:py-16" id="featured-posts">
+  <div class="container mx-auto px-4">
+    
+    <!-- Featured Card -->
+    <div class="border border-border rounded-2xl overflow-hidden shadow-sm bg-card" id="featured-card">
+      
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between p-6 md:p-8">
+        <div class="mb-4 md:mb-0">
+          <div class="flex items-center mb-3">
+            <svg class="w-6 h-6 text-featured mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+            </svg>
+            <h2 class="text-2xl md:text-3xl font-bold text-foreground" id="featured-title">
+              Featured Articles
+            </h2>
+          </div>
+          <p class="text-muted-foreground max-w-md" id="featured-subtitle">
+            Discover our handpicked collection of the most valuable and insightful content
+          </p>
         </div>
-        <div>
-          <h2 class="text-4xl md:text-5xl font-bold text-text-primary mb-2" id="featured-title">
-            Featured Articles
-          </h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-warning-400 to-warning-600 rounded-full mx-auto"></div>
+        
+        <div class="flex-shrink-0">
+          <a href="{{@site.url}}/featured" 
+             class="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors duration-200 group">
+            <span>View All</span>
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
         </div>
       </div>
-      <p class="text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed" id="featured-subtitle">
-        Discover our handpicked collection of the most valuable and insightful content
-      </p>
-    </div>
-    
-    <!-- Featured Posts Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featured-grid">
-      {{#get "posts" filter="featured:true" limit="6" include="authors"}}
-        {{#foreach posts}}
-          {{> components/grid-card}}
-        {{/foreach}}
-      {{else}}
-        <!-- Enhanced Fallback -->
-        <div class="col-span-full text-center py-16">
-          <div class="max-w-md mx-auto">
-            <div class="w-24 h-24 bg-gradient-to-br from-warning-100 to-warning-200 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-              <svg class="w-12 h-12 text-warning-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
-              </svg>
+      
+      <!-- Separator -->
+      <div class="border-t border-border"></div>
+      
+      <!-- Content -->
+      <div class="p-6 md:p-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="featured-grid">
+          {{#get "posts" filter="featured:true" limit="4" include="authors"}}
+            {{#foreach posts}}
+              <article class="group cursor-pointer">
+                <a href="{{url}}" class="block bg-card border border-border rounded-xl overflow-hidden hover:shadow-md hover:border-border/80 transition-all duration-200">
+                  
+                  <!-- Featured Image -->
+                  <div class="aspect-video overflow-hidden bg-muted">
+                    {{#if feature_image}}
+                      <img src="{{img_url feature_image size="m"}}" 
+                           alt="{{title}}" 
+                           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                           loading="lazy">
+                    {{else}}
+                      <div class="w-full h-full flex items-center justify-center bg-muted">
+                        <svg class="w-12 h-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                      </div>
+                    {{/if}}
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="p-4">
+                    <!-- Title -->
+                    <h3 class="font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200">
+                      {{title}}
+                    </h3>
+                    
+                    <!-- Excerpt -->
+                    {{#if excerpt}}
+                      <p class="text-sm text-muted-foreground mb-3 line-clamp-2">
+                        {{excerpt}}
+                      </p>
+                    {{/if}}
+                    
+                    <!-- Meta -->
+                    <div class="flex items-center justify-between text-xs text-muted-foreground">
+                      <div class="flex items-center">
+                        {{#if primary_author}}
+                          <span>{{primary_author.name}}</span>
+                        {{/if}}
+                      </div>
+                      <time datetime="{{date format="YYYY-MM-DD"}}">
+                        {{date format="MMM DD, YYYY"}}
+                      </time>
+                    </div>
+                  </div>
+                  
+                </a>
+              </article>
+            {{/foreach}}
+          {{else}}
+            <!-- Fallback when no featured posts -->
+            <div class="col-span-full text-center py-12">
+              <div class="max-w-sm mx-auto">
+                <div class="w-16 h-16 bg-muted rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <svg class="w-8 h-8 text-featured" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-foreground mb-2">No Featured Posts Yet</h3>
+                <p class="text-muted-foreground text-sm">Featured articles will appear here once they're published.</p>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold text-text-primary mb-3">No Featured Posts Yet</h3>
-            <p class="text-text-secondary leading-relaxed">Featured articles will appear here once they're published. Check back soon for curated content!</p>
-          </div>
+          {{/get}}
         </div>
-      {{/get}}
+      </div>
+      
     </div>
     
-    <!-- Enhanced CTA Button -->
-    {{#get "posts" filter="featured:true" limit="1" include="authors"}}
-      {{#if posts}}
-        <div class="text-center mt-16">
-          <div class="inline-flex flex-col items-center">
-            <a href="{{@site.url}}/featured" 
-               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-interactive-primary to-interactive-primary-hover text-text-inverse font-semibold rounded-2xl hover:shadow-lg hover:scale-105 transition-all duration-300 group shadow-md">
-              <svg class="w-5 h-5 mr-3 text-warning-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
-              </svg>
-              <span>View All Featured Posts</span>
-              <svg class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </a>
-            <p class="text-text-muted text-sm mt-3">Explore our complete collection of featured content</p>
-          </div>
-        </div>
-      {{/if}}
-    {{/get}}
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const { animate, stagger } = Motion;
+  
+  // Animate featured card entrance
+  animate('#featured-card', 
+    { opacity: [0, 1], y: [30, 0] }, 
+    { duration: 0.6, easing: 'ease-out' }
+  );
+  
+  // Animate featured posts with stagger
+  animate('#featured-grid article', 
+    { opacity: [0, 1], y: [20, 0] }, 
+    { duration: 0.4, delay: stagger(0.1, { start: 0.3 }), easing: 'ease-out' }
+  );
+});
+</script>
