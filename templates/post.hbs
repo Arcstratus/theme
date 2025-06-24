@@ -71,6 +71,13 @@
                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
               </div>
+              {{#if feature_image_caption}}
+                <div class="px-8 py-4 bg-muted border-t border-border">
+                  <p class="text-xs text-muted-foreground italic text-center">
+                    {{{feature_image_caption}}}
+                  </p>
+                </div>
+              {{/if}}
             {{/if}}
             
             <div class="p-8 md:p-12">
